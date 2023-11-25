@@ -12,7 +12,8 @@ export default function LoginPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    axios.post('https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/login', {
+    // https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/login
+    axios.post(' https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/login', {
       email,
       password
     },{
@@ -21,7 +22,6 @@ export default function LoginPage() {
         'Content-Type': 'application/json'
       }}).then((res) => {
       console.log(res.data.data._id)
-      // cookies.set('token', res.data.token);
     }).catch((err) => {
       console.log(err);
     })

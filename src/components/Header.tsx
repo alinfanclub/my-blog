@@ -9,24 +9,21 @@ import axios from 'axios';
 
 export default function Header() {
   const pathname = usePathname();
-  const cookies = new Cookies();
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
 
-  // useEffect(() => {
-  //   const token =cookies.get('token');
-  //   if (token) {
-  //     axios.get('https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/auth', {
-  //       withCredentials: true,
-  //     })
-  //     .then((res) => {
-  //       console.log(res.data)
-  //     }).catch((err) => {
-  //       console.log(err)
-  //     }
-  //     )
-  
-  // }}
-  // ,[])
+  useEffect(() => {
+      axios.get('https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/auth', {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res)
+        setUser(res.data.user)
+      }).catch((err) => {
+        console.log(err)
+      }
+      )
+  }
+  ,[])
 
   return (
     <header className="flex items-center justify-between min-h-[108px] p-4">
