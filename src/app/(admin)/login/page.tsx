@@ -22,7 +22,6 @@ export default function LoginPage() {
         'Content-Type': 'application/json'
       }}).then((res) => {
       console.log(res.data.data._id)
-      cookies.set("jwt", res.data.token, {path: "/"})
     }).catch((err) => {
       console.log(err);
     })
