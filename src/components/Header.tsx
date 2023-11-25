@@ -24,6 +24,10 @@ export default function Header() {
   }
   ,[])
 
+  const handlelogout = () => {
+    setUser(null)
+  }
+
   return (
     <header className="flex items-center justify-between min-h-[108px] p-4">
       <div>
@@ -44,7 +48,7 @@ export default function Header() {
             <Link href='/admin'>
               Admin
             </Link>
-            <Logout />
+            <Logout logout={handlelogout}/>
             </>
           )}
         </nav>
