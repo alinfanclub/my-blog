@@ -15,7 +15,11 @@ export default function LoginPage() {
     axios.post('https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/login', {
       email,
       password
-    }).then((res) => {
+    },{
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json'
+      }}).then((res) => {
       console.log(res.data.data._id)
       // cookies.set('token', res.data.token);
     }).catch((err) => {
