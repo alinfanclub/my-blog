@@ -1,5 +1,7 @@
 const getAllPosts = async () => {
-  const response = await fetch('https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/post');
+  const response = await fetch('https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/post', {
+    cache: 'no-cache',
+  });
   return response.json();
 }
 

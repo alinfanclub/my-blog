@@ -26,6 +26,9 @@ export default function Header() {
 
   const handlelogout = () => {
     setUser(null)
+    axios.post('https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/logout', {}, {
+      withCredentials: true,
+    })
   }
 
   return (
