@@ -19,7 +19,21 @@ type Post = {
   content: string;
 };
 
+const isAdmin = async () => {
+  await axios
+    .get(
+      "https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/auth",
+      {
+        withCredentials: true,
+      }
+    )
+    .then((res) => {
+      console.log(res.data.user);
+    });
+};
+
 export default async function AdminPage() {
+  isAdmin();
   const { data: posts } = await getAllPosts();
   return (
     <div>

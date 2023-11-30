@@ -1,15 +1,11 @@
 "use client";
 
 import { useAuthContext } from "@/context/AuthContext";
-import { loginUser } from "@/features/auth/userSlice";
-import axios from "axios";
 import { useState } from "react";
-import { Cookies } from "react-cookie";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const cookies = new Cookies();
 
   const { login } = useAuthContext();
 
