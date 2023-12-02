@@ -35,21 +35,13 @@ export const AuthContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [user, setUser] = useState<User | null>(null);
+  const localUser =
+    typeof window !== "undefined" && localStorage.getItem("user");
   useEffect(() => {
-    axios
-      .get(
-        "https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/auth",
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        setUser(res.data.user);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    if (localUser) {
+      setUser(JSON.parse(localUser));
+    }
+  }, [localUser]);
 
   const logout = () => {
     axios.post(
@@ -60,12 +52,13 @@ export const AuthContextProvider = ({
       }
     );
     setUser(null);
+    localStorage.removeItem("user");
   };
 
   const login = (email: string, password: string) => {
     axios
       .post(
-        " https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/login",
+        "https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/login",
         {
           email,
           password,
@@ -78,13 +71,14 @@ export const AuthContextProvider = ({
         }
       )
       .then((res) => {
-        console.log(res.data.data._id);
-        window.location.href = "/";
+        localStorage.setItem("user", JSON.stringify(res.data.data));
+        setUser(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   return (
     <AuthContext.Provider value={{ user, setUser, logout, login }}>
       {children}
