@@ -9,6 +9,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { Cookies } from "react-cookie";
 
 type User = {
   _id?: string;
@@ -29,19 +30,32 @@ const AuthContext = createContext<ContextPorps>({
   login: (email: string, password: string) => {},
 });
 
+const cookies = new Cookies();
+
 export const AuthContextProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
   const [user, setUser] = useState<User | null>(null);
-  const localUser =
-    typeof window !== "undefined" && localStorage.getItem("user");
+  const cookie = new Cookies().get("jwt");
   useEffect(() => {
-    if (localUser) {
-      setUser(JSON.parse(localUser));
-    }
-  }, [localUser]);
+    axios
+      .get(
+        "https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/auth",
+        {
+          headers: {
+            Authorization: `Bearer ${cookie}`,
+          },
+        }
+      )
+      .then((res) => {
+        setUser(res.data.data);
+      })
+      .catch((err) => {
+        err.response.status === 500 && setUser(null);
+      });
+  }, [cookie]);
 
   const logout = () => {
     axios.post(
@@ -51,8 +65,9 @@ export const AuthContextProvider = ({
         withCredentials: true,
       }
     );
-    setUser(null);
     localStorage.removeItem("user");
+    window.location.href = "/";
+    cookies.remove("jwt");
   };
 
   const login = (email: string, password: string) => {
@@ -71,8 +86,16 @@ export const AuthContextProvider = ({
         }
       )
       .then((res) => {
-        localStorage.setItem("user", JSON.stringify(res.data.data));
-        setUser(res.data.data);
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            _id: res.data.data._id,
+            email: res.data.data.email,
+            name: res.data.data.name,
+          })
+        );
+        window.location.href = "/admin";
+        cookies.set("jwt", res.data.token, { path: "/" });
       })
       .catch((err) => {
         console.log(err);

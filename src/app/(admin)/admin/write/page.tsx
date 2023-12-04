@@ -2,12 +2,14 @@
 
 import { useAuthContext } from "@/context/AuthContext";
 import axios from "axios";
+import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function WritePostPage() {
   const [title, setTile] = useState("");
   const [content, setContent] = useState("");
   const { user } = useAuthContext();
+
   const handlesubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (user) {
@@ -25,6 +27,7 @@ export default function WritePostPage() {
         )
         .then((res) => {
           console.log(res);
+          window.location.href = "/admin";
         })
         .catch((err) => {
           console.log(err);
