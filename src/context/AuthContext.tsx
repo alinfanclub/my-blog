@@ -40,21 +40,23 @@ export const AuthContextProvider = ({
   const [user, setUser] = useState<User | null>(null);
   const cookie = new Cookies().get("jwt");
   useEffect(() => {
-    axios
-      .get(
-        "https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/auth",
-        {
-          headers: {
-            Authorization: `Bearer ${cookie}`,
-          },
-        }
-      )
-      .then((res) => {
-        setUser(res.data.data);
-      })
-      .catch((err) => {
-        err.response.status === 500 && setUser(null);
-      });
+    if (cookie) {
+      axios
+        .get(
+          "https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/auth",
+          {
+            headers: {
+              Authorization: `Bearer ${cookie}`,
+            },
+          }
+        )
+        .then((res) => {
+          setUser(res.data.data);
+        })
+        .catch((err) => {
+          err.response.status === 500 && setUser(null);
+        });
+    }
   }, [cookie]);
 
   const logout = () => {
