@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import store from "@/redux/store";
 import { AuthContextProvider } from "@/context/AuthContext";
+import { DarkModeProvider } from "@/components/DarkModeProvider";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -22,11 +23,13 @@ export default function RootLayout({
     <html lang="en" className={sans.className}>
       <body className="flex flex-col w-full">
         <AuthContextProvider>
-          <Header />
-          <main className="grow px-4 max-w-screen-2xl mx-auto w-full">
-            {children}
-          </main>
-          <Footer />
+          <DarkModeProvider>
+            <Header />
+            <main className="grow px-4 max-w-screen-2xl mx-auto w-full">
+              {children}
+            </main>
+            <Footer />
+          </DarkModeProvider>
         </AuthContextProvider>
       </body>
     </html>

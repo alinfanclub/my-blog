@@ -12,6 +12,7 @@ type Post = {
   _id: string;
   title: string;
   content: string;
+  description: string;
 };
 
 export default function AdminPage() {
@@ -48,8 +49,8 @@ export default function AdminPage() {
           </div>
           {posts.map((post: Post) => (
             <div key={post._id} className="border">
-              <h1>{post.title}</h1>
-              <p>{post.content}</p>
+              <Link href={`/admin/write/${post.title}`}>{post.title}</Link>
+              <p>{post.description}</p>
               <DeleteButton id={post._id} setPosts={setPosts} />
             </div>
           ))}

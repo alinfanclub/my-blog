@@ -51,11 +51,11 @@ export default async function PostDetailPage({
         className="flex-1 max-w-[800px] mx-auto flex flex-col gap-8"
       >
         <div className="flex flex-col gap-4  text-center">
-          <h1>{post.title}</h1>
+          <h1 className="">{post.title}</h1>
           <p>{printDate(post.createdAt)}</p>
           <div className="flex gap-4 justify-center">
             {post.tags.map((tag: string) => (
-              <span key={tag}>{tag}</span>
+              <span key={tag}>#{tag}</span>
             ))}
           </div>
         </div>

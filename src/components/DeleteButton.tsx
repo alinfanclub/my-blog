@@ -8,6 +8,7 @@ type Post = {
   _id: string;
   title: string;
   content: string;
+  description: string;
 };
 
 export default function DeleteButton({

@@ -1,13 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import Profile from "./Profile";
-import { Cookies } from "react-cookie";
-import axios from "axios";
 import TypoWrite from "./TypoWrite";
 import Logout from "./Logout";
 import { useAuthContext } from "@/context/AuthContext";
+import DarkModeButton from "./DarkMode";
 
 export default function Header() {
   const { user, setUser, logout } = useAuthContext();
@@ -17,11 +14,12 @@ export default function Header() {
   };
 
   return (
-    <header className="flex items-center justify-between min-h-[108px] p-4">
-      <div>
+    <header className="flex items-center justify-between min-h-[108px] p-4 max-w-screen-2xl mx-auto w-full">
+      <div className="flex items-center gap-4">
         <div className="text-primary-color  flex items-center justify-between text-xl font-semibold">
           <TypoWrite />
         </div>
+        <DarkModeButton />
       </div>
       <div className="flex items-center text-base leading-5">
         <nav className="flex items-center gap-4">

@@ -7,8 +7,7 @@ export async function middleware(req: NextRequest) {
   try {
     const url = req.nextUrl.clone();
     const cookie = req.cookies.get("jwt");
-
-    if (url.pathname === "/admin" || url.pathname === "/admin/write") {
+    if (url.pathname.startsWith("/admin")) {
       let token = cookie;
       const curToken = await fetch(
         "https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/user/auth",
@@ -27,4 +26,8 @@ export async function middleware(req: NextRequest) {
     console.log("err: ", error);
   }
 }
+
+export const config = {
+  matcher: ["/admin", "/admin/write", "/admin/write/:path*"],
+};
 middleware;
