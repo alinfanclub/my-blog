@@ -1,5 +1,9 @@
+import PostCard from "@/components/PostCard";
+import { Post } from "@/types/post";
 import printDate from "@/utils/printDate";
+import Image from "next/image";
 import Link from "next/link";
+import { format, render, cancel, register } from "timeago.js";
 
 const getAllPosts = async () => {
   const response = await fetch(
@@ -11,34 +15,19 @@ const getAllPosts = async () => {
   return response.json();
 };
 
-type Post = {
-  _id: string;
-  title: string;
-  content: string;
-  description: string;
-  createdAt: string;
-};
-
 export default async function PostsPage() {
   const { data: posts } = await getAllPosts().then((res) => {
     const date = res.data;
-    console.log(date);
     return {
       ...res,
       createdAt: date,
     };
   });
   return (
-    <div>
+    <section className="flex flex-col gap-4">
       {posts.map((post: Post) => (
-        <Link href={`/posts/${post.title}`} key={post._id}>
-          <div className="border">
-            <h1>{post.title}</h1>
-            <p>{post.description}</p>
-            <p>{printDate(post.createdAt)}</p>
-          </div>
-        </Link>
+        <PostCard post={post} key={post._id} />
       ))}
-    </div>
+    </section>
   );
 }

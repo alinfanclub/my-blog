@@ -14,7 +14,7 @@ export default function Header() {
   };
 
   return (
-    <header className="flex items-center justify-between min-h-[108px] p-4 max-w-screen-2xl mx-auto w-full">
+    <header className="flex items-center justify-between min-h-[108px] p-4 max-w-screen-xl mx-auto w-full">
       <div className="flex items-center gap-4">
         <div className="text-primary-color  flex items-center justify-between text-xl font-semibold">
           <TypoWrite />

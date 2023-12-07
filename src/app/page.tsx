@@ -1,3 +1,5 @@
+import PostCard from "@/components/PostCard";
+import { Post } from "@/types/post";
 import printDate from "@/utils/printDate";
 import Link from "next/link";
 
@@ -11,14 +13,6 @@ const getAllPosts = async () => {
   return response.json();
 };
 
-type Post = {
-  _id: string;
-  title: string;
-  content: string;
-  description: string;
-  createdAt: string;
-};
-
 export default async function Home() {
   const { data: posts } = await getAllPosts().then((res) => {
     const date = res.data;
@@ -29,16 +23,11 @@ export default async function Home() {
     };
   });
   return (
-    <div>
+    <section className="flex flex-col gap-4">
+      <h1>Featured Post</h1>
       {posts.map((post: Post) => (
-        <Link href={`/posts/${post.title}`} key={post._id}>
-          <div className="border">
-            <h1>{post.title}</h1>
-            <p>{post.description}</p>
-            <p>{printDate(post.createdAt)}</p>
-          </div>
-        </Link>
+        <PostCard post={post} key={post._id} />
       ))}
-    </div>
+    </section>
   );
 }
