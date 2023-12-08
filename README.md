@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🖼️ NextBlog
 
-## Getting Started
+My personal blog built with Nextjs, it uses Nodejs server
 
-First, run the development server:
+Built Site:  
+[Kim's Devlog](https://my-blog-orcin-nine.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🍳 Tech Stack
+
+| Name       | Link                                                                   |
+| ---------- | ---------------------------------------------------------------------- |
+| Framework  | [NextJS](https://nextjs.org/docs)                                      |
+| Markdown   | [react-md-editor](https://uiwjs.github.io/react-md-editor/)            |
+| Server     | [NodeJs](https://nodejs.org/en/), [express](https://expressjs.com/ko/) |
+| Deployment | [Vercel](https://vercel.com)                                           |
+| Styling    | [Tailwindcss](https://tailwindcss.com/)                                |
+| Database   | [MongoDB](https://www.mongodb.com/ko-kr)                               |
+
+## 🌳 Project tree (~23.12.08)
+
+```tree
+📦 src
+├── app
+│   ├── (admin)
+│   │   ├── admin
+│   │   │   ├── page.tsx
+│   │   │   └── write
+│   │   │       ├── [slug]
+│   │   │       │   └── page.tsx
+│   │   │       └── page.tsx
+│   │   └── login
+│   │       └── page.tsx
+│   ├── [...not_found]
+│   │   └── page.tsx
+│   ├── about
+│   │   └── page.tsx
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── posts
+│       ├── [slug]
+│       │   ├── error.tsx
+│       │   └── page.tsx
+│       └── page.tsx
+├── components
+│   ├── DarkMode.tsx
+│   ├── DarkModeProvider.tsx
+│   ├── DeleteButton.tsx
+│   ├── Eduitor.tsx
+│   ├── Footer.tsx
+│   ├── Header.tsx
+│   ├── Logout.tsx
+│   ├── MarkdownContents.tsx
+│   ├── PostCard.tsx
+│   ├── Profile.tsx
+│   ├── TagInputComponent.tsx
+│   ├── Toc.tsx
+│   └── TypoWrite.tsx
+├── context
+│   └── AuthContext.tsx
+├── features
+│   └── auth
+│       └── userSlice.ts
+├── middleware.ts
+│
+├── types
+│   └── post.ts
+└── utils
+    ├── firebase.ts
+    ├── firestorage.ts
+    ├── printDate.ts
+    └── useIntersectionObserver.tsx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Google Lighthouse performance statistics
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![Google Lighthouse performance statistics](./assets/LightHouse.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🙏 Referenced sites
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[BlogToc](https://thisyujeong.dev/blog/toc-generator)
