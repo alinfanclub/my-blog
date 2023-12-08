@@ -31,7 +31,8 @@ export default async function PostDetailPage({
   contentHtml = contentHtml.replace(
     /<pre><code class="language-(.*?)">(.*?)<\/code><\/pre>/gs,
     (match, lang, code) => {
-      const highlightedCode = hljs.highlight(code, { language: lang }).value;
+      let highlightedCode = hljs.highlight(code, { language: lang }).value;
+
       return `<pre><code class="hljs ${lang}">${highlightedCode}</code></pre>`;
     }
   );
@@ -59,7 +60,10 @@ export default async function PostDetailPage({
             ))}
           </div>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: contentWithId }}></div>
+        <div
+          id="blogContent"
+          dangerouslySetInnerHTML={{ __html: contentWithId }}
+        ></div>
       </div>
 
       <div className="hidden 2xl:block absolute top-[200px] right-[10%] w-[200px]">

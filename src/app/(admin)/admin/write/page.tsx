@@ -43,7 +43,7 @@ export default function WritePostPage() {
         )
         .then((res) => {
           console.log(res);
-          router.push(`/posts/${res.data.title}`);
+          router.push(`/posts/${res.data.data.title}`);
         })
         .catch((err) => {
           console.log(err);

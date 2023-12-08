@@ -1,7 +1,5 @@
 import PostCard from "@/components/PostCard";
 import { Post } from "@/types/post";
-import printDate from "@/utils/printDate";
-import Link from "next/link";
 
 const getAllPosts = async () => {
   const response = await fetch(

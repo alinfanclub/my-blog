@@ -21,3 +21,37 @@ h2 {
   line-height: 1.2;
   margin-bottom: 0.75rem;
 }
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+#blogContent {
+  line-height: 2rem;
+}
+#blogContent h1,
+#blogContent h2,
+#blogContent h3 {
+  border-bottom: 1px solid #e2e8f0;
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+}
+
+html.light #blogContent h1,
+html.light #blogContent h2,
+html.light #blogContent h3 {
+  border-bottom: 1px solid #4a5568;
+}
+
+#blogContent code {
+  margin: 1rem 0;
+}
+
+#blogContent p code {
+  background-color: #edf2f7;
+  border-radius: 0.25rem;
+  color: #2d3748;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+}

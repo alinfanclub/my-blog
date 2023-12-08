@@ -15,7 +15,7 @@ export default function TypoWrite() {
             options={{
               strings: "Kim's Blog",
               autoStart: true,
-              loop: false,
+              loop: true,
               deleteSpeed: 100000,
               delay: 0,
             }}
@@ -25,7 +25,7 @@ export default function TypoWrite() {
             options={{
               strings: [`~${decodeStr} `],
               autoStart: true,
-              loop: false,
+              loop: true,
               deleteSpeed: 100000,
               delay: 0,
             }}

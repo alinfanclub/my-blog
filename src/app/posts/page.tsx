@@ -1,9 +1,5 @@
 import PostCard from "@/components/PostCard";
 import { Post } from "@/types/post";
-import printDate from "@/utils/printDate";
-import Image from "next/image";
-import Link from "next/link";
-import { format, render, cancel, register } from "timeago.js";
 
 const getAllPosts = async () => {
   const response = await fetch(

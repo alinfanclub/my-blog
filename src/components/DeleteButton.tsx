@@ -1,15 +1,9 @@
 "use client";
 
 import { useAuthContext } from "@/context/AuthContext";
+import { Post } from "@/types/post";
 import axios from "axios";
 import { Dispatch, SetStateAction } from "react";
-
-type Post = {
-  _id: string;
-  title: string;
-  content: string;
-  description: string;
-};
 
 export default function DeleteButton({
   id,

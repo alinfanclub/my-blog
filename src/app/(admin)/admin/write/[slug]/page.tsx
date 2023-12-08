@@ -4,7 +4,7 @@ import { Editor } from "@/components/Eduitor";
 import TagInputComponent from "@/components/TagInputComponent";
 import { useAuthContext } from "@/context/AuthContext";
 import axios from "axios";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 export default function WritePostPage({
@@ -18,7 +18,7 @@ export default function WritePostPage({
   const [featured, setFeatured] = useState<boolean | undefined>();
   const [tags, setTags] = useState<string[]>([]);
   const { user } = useAuthContext();
-
+  const router = useRouter();
   useEffect(() => {
     axios
       .get(
@@ -57,8 +57,7 @@ export default function WritePostPage({
           }
         )
         .then((res) => {
-          console.log(res);
-          window.location.href = "/admin";
+          router.push(`/posts/${res.data.data.title}`);
         })
         .catch((err) => {
           console.log(err);
