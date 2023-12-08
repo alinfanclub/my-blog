@@ -3,7 +3,6 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import store from "@/redux/store";
 import { AuthContextProvider } from "@/context/AuthContext";
 import { DarkModeProvider } from "@/components/DarkModeProvider";
 
