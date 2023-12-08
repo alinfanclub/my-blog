@@ -4,7 +4,6 @@ import Link from "next/link";
 import { format } from "timeago.js";
 
 export default function PostCard({ post }: { post: Post }) {
-  console.log(post);
   return (
     <Link href={`/posts/${post.title}`}>
       <div

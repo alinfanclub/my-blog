@@ -17,6 +17,8 @@ const DarkModeButton = () => {
 
   return (
     <button
+      type="button"
+      className="inline-block"
       onClick={(e) => (theme === "dark" ? setTheme("light") : setTheme("dark"))}
     >
       {theme === "dark" ? <FaMoon /> : <FaSun />}
