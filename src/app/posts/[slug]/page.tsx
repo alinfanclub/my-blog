@@ -6,6 +6,7 @@ import { remark } from "remark";
 import html from "remark-html";
 import "highlight.js/styles/github-dark-dimmed.css";
 import printDate from "@/utils/printDate";
+import Link from "next/link";
 const getPostDetail = async (slug: string) => {
   const response = await fetch(
     `https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/post/${slug}`,
@@ -56,7 +57,9 @@ export default async function PostDetailPage({
           <p>{printDate(post.createdAt)}</p>
           <div className="flex gap-4  flex-wrap justify-center">
             {post.tags.map((tag: string) => (
-              <div key={tag}>#{tag}</div>
+              <Link href={`/posts/tags/${tag}`} key={tag}>
+                #{tag}
+              </Link>
             ))}
           </div>
         </div>
