@@ -68,5 +68,5 @@ export const useIntersectionObserver = (
     return () => observer.disconnect();
 
     // content 내용이 바뀔때를 대비하여 deps로 content를 넣어준다.
-  }, [content]);
+  }, [content, setActiveId]);
 };

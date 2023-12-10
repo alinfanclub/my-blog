@@ -38,7 +38,7 @@ export const AuthContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [user, setUser] = useState<User | null>(null);
-  const cookie = new Cookies().get("jwt");
+  const cookie = new Cookies().get("auth");
   useEffect(() => {
     if (cookie) {
       axios
@@ -69,7 +69,7 @@ export const AuthContextProvider = ({
     );
     localStorage.removeItem("user");
     window.location.href = "/";
-    cookies.remove("jwt");
+    cookies.remove("auth");
   };
 
   const login = (email: string, password: string) => {
@@ -97,7 +97,10 @@ export const AuthContextProvider = ({
           })
         );
         window.location.href = "/admin";
-        cookies.set("jwt", res.data.token, { path: "/" });
+        cookies.set("auth", res.data.token, {
+          path: "/",
+          expires: new Date(Date.now() + 60 * 60 * 24 * 1000 * 3),
+        });
       })
       .catch((err) => {
         console.log(err);

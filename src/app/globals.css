@@ -55,3 +55,11 @@ html.light #blogContent h3 {
   font-size: 0.875rem;
   padding: 0.25rem 0.5rem;
 }
+
+#blogContent a {
+  @apply text-lime-500;
+}
+
+html.light #blogContent a {
+  @apply text-lime-700;
+}

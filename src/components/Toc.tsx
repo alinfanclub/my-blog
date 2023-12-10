@@ -12,7 +12,6 @@ interface Props {
 const Toc = ({ content }: Props) => {
   // activeId는 화면 상단에 위치한 제목 element 다룰 state
   const [activeId, setActiveId] = useState("");
-  console.log(activeId);
 
   // intersectionObserver를 이용해 만든 커스텀 훅으로 setState를 전달 하여
   // 화면 상단에 위치한 제목 element가 뭔지 알아낸다.
@@ -52,12 +51,11 @@ const Toc = ({ content }: Props) => {
                   // href에 #title을 주어서 클릭시 해당 위치로 스크롤 이동하도록 구현
                   href={`#${item.title.replace(/ /g, "-")}`}
                   key={item.title + idx}
-                  style={{ padding: "0px" }}
                   className={`${
                     activeId === item.title.replace(/ /g, "-")
-                      ? "text-blue-500 border-l-4 border-blue-500 bg-slate-100"
+                      ? "text-lime-500 border-l-4 border-lime-500 bg-white/20"
                       : "text-gray-500"
-                  } transition-all block`}
+                  } transition-all block p-0`}
                 >
                   <div
                     // 목차에 해당 하는 title을 넣는다.

@@ -25,6 +25,7 @@ export default function Header() {
         <nav className="flex items-center gap-4">
           <Link href="/about">About</Link>
           <Link href="/posts">Posts</Link>
+          <Link href="/posts/tags">Tags</Link>
           {user && (
             <>
               <Link href="/admin">Admin</Link>

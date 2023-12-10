@@ -6,7 +6,7 @@ import { Cookies } from "react-cookie";
 export async function middleware(req: NextRequest) {
   try {
     const url = req.nextUrl.clone();
-    const cookie = req.cookies.get("jwt");
+    const cookie = req.cookies.get("auth");
     if (url.pathname.startsWith("/admin")) {
       let token = cookie;
       const curToken = await fetch(

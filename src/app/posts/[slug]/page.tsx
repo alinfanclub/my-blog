@@ -7,6 +7,7 @@ import html from "remark-html";
 import "highlight.js/styles/github-dark-dimmed.css";
 import printDate from "@/utils/printDate";
 import Link from "next/link";
+import { Editor } from "@/components/Eduitor";
 const getPostDetail = async (slug: string) => {
   const response = await fetch(
     `https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/post/${slug}`,
@@ -32,8 +33,8 @@ export default async function PostDetailPage({
   contentHtml = contentHtml.replace(
     /<pre><code class="language-(.*?)">(.*?)<\/code><\/pre>/gs,
     (match, lang, code) => {
-      let highlightedCode = hljs.highlight(code, { language: lang }).value;
-
+      const Dcode = code.replace(/&#x3C;/g, "<");
+      let highlightedCode = hljs.highlight(Dcode, { language: lang }).value;
       return `<pre><code class="hljs ${lang}">${highlightedCode}</code></pre>`;
     }
   );
@@ -57,7 +58,11 @@ export default async function PostDetailPage({
           <p>{printDate(post.createdAt)}</p>
           <div className="flex gap-4  flex-wrap justify-center">
             {post.tags.map((tag: string) => (
-              <Link href={`/posts/tags/${tag}`} key={tag}>
+              <Link
+                href={`/posts/tags/${tag}`}
+                key={tag}
+                className="dark:hover:text-lime-500 hover:text-lime-700 transition-all"
+              >
                 #{tag}
               </Link>
             ))}
