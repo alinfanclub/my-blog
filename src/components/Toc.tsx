@@ -55,7 +55,7 @@ const Toc = ({ content }: Props) => {
                     activeId === item.title.replace(/ /g, "-")
                       ? "text-lime-500 border-l-4 border-lime-500 bg-white/20"
                       : "text-gray-500"
-                  } transition-all block p-0`}
+                  } transition-all block p-0 border-lime-500`}
                 >
                   <div
                     // 목차에 해당 하는 title을 넣는다.

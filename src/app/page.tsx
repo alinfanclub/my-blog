@@ -12,14 +12,7 @@ const getAllPosts = async () => {
 };
 
 export default async function Home() {
-  const { data: posts } = await getAllPosts().then((res) => {
-    const date = res.data;
-    console.log(date);
-    return {
-      ...res,
-      createdAt: date,
-    };
-  });
+  const { data: posts } = await getAllPosts();
   return (
     <section className="flex flex-col gap-4">
       <h1>Featured Post</h1>

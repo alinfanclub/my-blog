@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AuthContextProvider } from "@/context/AuthContext";
 import { DarkModeProvider } from "@/components/DarkModeProvider";
+import ScrollTop from "@/components/ScrollTop";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
               {children}
             </main>
             <Footer />
+            <ScrollTop />
           </DarkModeProvider>
         </AuthContextProvider>
       </body>

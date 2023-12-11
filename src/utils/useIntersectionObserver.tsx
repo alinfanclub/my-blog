@@ -55,7 +55,7 @@ export const useIntersectionObserver = (
     // IntersectionObserver에 callback과 옵션을 생성자로 넘겨 주고 새로 생성한다.
     const observer = new IntersectionObserver(callback, {
       // rootMargin 옵션을 통해 화면 상단에서 네비바 영역(-64px)을 빼고, 위에서부터 -40%정도 영역만 관찰한다.
-      rootMargin: "-64px 0px -40% 0px",
+      rootMargin: "-0px 0px -40% 0px",
     });
 
     // 제목 태그들을 다 찾아낸다.

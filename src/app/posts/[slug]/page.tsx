@@ -74,7 +74,7 @@ export default async function PostDetailPage({
         ></div>
       </div>
 
-      <div className="hidden 2xl:block absolute top-[200px] right-[10%] w-[200px]">
+      <div className="hidden 2xl:block fixed top-[200px] right-[10%] w-[200px]">
         <Toc content={content} />
       </div>
     </div>
