@@ -10,7 +10,10 @@ import ScrollTop from "@/components/ScrollTop";
 const sans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kim's Blog",
+  title: {
+    default: "Kim's Blog",
+    template: "Kim's Blog | %s",
+  },
   description: "Kim's Blog",
   keywords: ["Kim's Blog", "Next.js", "React", "JavaScript"],
 };
