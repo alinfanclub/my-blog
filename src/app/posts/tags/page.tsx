@@ -12,6 +12,12 @@ const getTagList = async () => {
   return response.json();
 };
 
+export const metadata = {
+  title: "Tag List",
+  description: "Tag List",
+  keywords: "Tag List",
+};
+
 export default async function tagListPasge() {
   const { data: tags } = await getTagList();
   console.log(tags);

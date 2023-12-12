@@ -8,6 +8,8 @@ import "highlight.js/styles/github-dark-dimmed.css";
 import printDate from "@/utils/printDate";
 import Link from "next/link";
 import { Editor } from "@/components/Eduitor";
+import { Metadata } from "next";
+
 const getPostDetail = async (slug: string) => {
   const response = await fetch(
     `https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/post/${slug}`,
@@ -17,6 +19,19 @@ const getPostDetail = async (slug: string) => {
   );
   return response.json();
 };
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const { data: post } = await getPostDetail(slug);
+  return {
+    title: post.title,
+    description: post.description,
+    keywords: post.tags.join(","),
+  };
+}
 
 export default async function PostDetailPage({
   params: { slug },

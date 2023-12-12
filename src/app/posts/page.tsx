@@ -11,6 +11,12 @@ const getAllPosts = async () => {
   return response.json();
 };
 
+export const metadata = {
+  title: "Post List",
+  description: "Post List page",
+  keywords: "Post List",
+};
+
 export default async function PostsPage() {
   const { data: posts } = await getAllPosts().then((res) => {
     const date = res.data;
