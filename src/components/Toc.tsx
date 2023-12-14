@@ -37,7 +37,7 @@ const Toc = ({ content }: Props) => {
 
   return (
     <div className="w-full">
-      <div style={{ height: "100%" }}>
+      <div className="h-full">
         <p className="border-b mb-4 text-gray-500">목차</p>
         <div />
         {/* 목차에 item이 너무 많은경우 화면 아래로 넘어갈수 있기때문에 ScrollBars를 이용하여
@@ -54,7 +54,7 @@ const Toc = ({ content }: Props) => {
                   className={`${
                     activeId === item.title.replace(/ /g, "-")
                       ? "text-lime-500 border-l-4 border-lime-500 bg-white/20"
-                      : "text-gray-500"
+                      : "text-gray-500 border-l-4 border-transparent hover:text-lime-500 hover:scale-110"
                   } transition-all block p-0 border-lime-500`}
                 >
                   <div

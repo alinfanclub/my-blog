@@ -3,6 +3,13 @@
 import { Editor } from "@/components/Eduitor";
 import TagInputComponent from "@/components/TagInputComponent";
 import { useAuthContext } from "@/context/AuthContext";
+import { uploadImage } from "@/utils/firestorage";
+import {
+  ICommand,
+  TextAreaTextApi,
+  TextState,
+  commands,
+} from "@uiw/react-md-editor";
 import axios from "axios";
 import { redirect, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -69,6 +76,33 @@ export default function WritePostPage({
     setContent(value);
   }, []);
 
+  const insertImage: ICommand = {
+    name: "insertImage",
+    keyCommand: "insertImage",
+    buttonProps: { "aria-label": "insert Image" },
+    icon: (
+      <svg width="12" height="12" viewBox="0 0 20 20">
+        <path
+          fill="currentColor"
+          d="M15 9c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4-7H1c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h18c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 13l-6-5-2 2-4-5-4 8V4h16v11z"
+        ></path>
+      </svg>
+    ),
+    execute: (state: TextState, api: TextAreaTextApi) => {
+      const file = document.createElement("input");
+      file.type = "file";
+      file.accept = "image/*";
+      file.onchange = async (e) => {
+        if (file.files && file.files.length > 0) {
+          const fileData = file.files[0];
+          const url = await uploadImage(fileData);
+          api.replaceSelection(`![alt](${url})`);
+        }
+      };
+      file.click();
+    },
+  };
+
   return (
     <div className="w-full">
       <input
@@ -96,7 +130,12 @@ export default function WritePostPage({
         onChange={(e) => setFeatured(e.target.checked)}
         checked={featured || false}
       />
-      <Editor value={content || ""} onChange={handleChange} height={650} />
+      <Editor
+        value={content || ""}
+        onChange={handleChange}
+        height={650}
+        commands={[...commands.getCommands(), insertImage]}
+      />
       <button
         type="submit"
         onClick={handlesubmit}

@@ -1,14 +1,12 @@
-import DeleteButton from "@/components/DeleteButton";
 import Toc from "@/components/Toc";
 import hljs from "highlight.js";
-import Markdown from "react-markdown";
 import { remark } from "remark";
 import html from "remark-html";
 import "highlight.js/styles/github-dark-dimmed.css";
 import printDate from "@/utils/printDate";
 import Link from "next/link";
-import { Editor } from "@/components/Eduitor";
 import { Metadata } from "next";
+import cheerio from "cheerio";
 
 const getPostDetail = async (slug: string) => {
   const response = await fetch(
@@ -42,8 +40,20 @@ export default async function PostDetailPage({
 
   const content = post.content;
 
-  const processedContent = await remark().use(html).process(post.content);
+  const processedContent = await remark().use().use(html).process(post.content);
   let contentHtml = processedContent.toString();
+
+  const $ = cheerio.load(contentHtml);
+
+  // 모든 이미지 태그 찾기 및 크기 속성 추가
+  $("img").each((i, el) => {
+    // 예시: 모든 이미지에 300x200 크기 지정
+    $(el).attr("width", "800");
+    $(el).attr("height", "360");
+  });
+
+  // 수정된 HTML 업데이트
+  contentHtml = $.html();
 
   contentHtml = contentHtml.replace(
     /<pre><code class="language-(.*?)">(.*?)<\/code><\/pre>/gs,
@@ -63,14 +73,14 @@ export default async function PostDetailPage({
   );
 
   return (
-    <div className="flex gap-4 w-full">
+    <section className="flex gap-4 w-full">
       <div
         key={post._id}
         className="flex-1 max-w-[800px] mx-auto w-full flex flex-col gap-8"
       >
-        <div className="flex flex-col gap-4  text-center">
+        <article className="flex flex-col gap-4  text-center">
           <h1 className="">{post.title}</h1>
-          <p>{printDate(post.createdAt)}</p>
+          <time>{printDate(post.createdAt)}</time>
           <div className="flex gap-4  flex-wrap justify-center">
             {post.tags.map((tag: string) => (
               <Link
@@ -82,16 +92,16 @@ export default async function PostDetailPage({
               </Link>
             ))}
           </div>
-        </div>
-        <div
+        </article>
+        <article
           id="blogContent"
           dangerouslySetInnerHTML={{ __html: contentWithId }}
-        ></div>
+        ></article>
       </div>
 
-      <div className="hidden 2xl:block fixed top-[200px] right-[10%] w-[200px]">
+      <aside className="hidden 2xl:block fixed top-[200px] right-[10%] w-[200px]">
         <Toc content={content} />
-      </div>
-    </div>
+      </aside>
+    </section>
   );
 }
