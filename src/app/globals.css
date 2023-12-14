@@ -68,6 +68,8 @@ html.light #blogContent a {
 
 #blogContent img {
   margin: 1rem auto;
+  max-height: 600px;
+  object-fit: contain;
 }
 
 #blogContent p {
