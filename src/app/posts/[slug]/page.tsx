@@ -58,7 +58,8 @@ export default async function PostDetailPage({
   contentHtml = contentHtml.replace(
     /<pre><code class="language-(.*?)">(.*?)<\/code><\/pre>/gs,
     (match, lang, code) => {
-      const Dcode = code.replace(/&#x3C;/g, "<");
+      let Dcode = code.replace(/&lt;/g, "<");
+      Dcode = Dcode.replace(/&gt;/g, ">");
       let highlightedCode = hljs.highlight(Dcode, { language: lang }).value;
       return `<pre><code class="hljs ${lang}">${highlightedCode}</code></pre>`;
     }
@@ -78,8 +79,8 @@ export default async function PostDetailPage({
         key={post._id}
         className="flex-1 max-w-[800px] mx-auto w-full flex flex-col gap-8"
       >
-        <article className="flex flex-col gap-4  text-center">
-          <h1 className="">{post.title}</h1>
+        <article className="flex flex-col gap-4  text-center border-dotted border-b pb-2 border-black dark:border-white">
+          <h1 className="text-4xl">{post.title}</h1>
           <time>{printDate(post.createdAt)}</time>
           <div className="flex gap-4  flex-wrap justify-center">
             {post.tags.map((tag: string) => (
@@ -95,6 +96,7 @@ export default async function PostDetailPage({
         </article>
         <article
           id="blogContent"
+          className="prose dark:prose-invert lg:prose-lg xl:prose-xl mx-auto w-full pr prose-pre:p-0"
           dangerouslySetInnerHTML={{ __html: contentWithId }}
         ></article>
       </div>

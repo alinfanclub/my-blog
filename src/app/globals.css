@@ -11,67 +11,32 @@ body {
   scroll-behavior: smooth;
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1.25rem;
+#blogContent a {
+  @apply text-lime-500;
 }
-h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 1.25rem;
-}
-h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-#blogContent {
-  line-height: 2rem;
-}
-#blogContent h1,
-#blogContent h2 {
-  border-bottom: 1px solid #e2e8f0;
-  margin-top: 2rem;
-  padding-bottom: 0.5rem;
-}
-
-html.light #blogContent h1,
-html.light #blogContent h2 {
-  border-bottom: 1px solid #4a5568;
-  margin-top: 2rem;
-  padding-bottom: 0.5rem;
-}
-
-#blogContent code {
-  margin: 1rem 0;
-}
-
 #blogContent p code {
   background-color: #edf2f7;
   border-radius: 0.25rem;
   color: #2d3748;
-  font-size: 0.875rem;
   padding: 0.25rem 0.5rem;
 }
 
-#blogContent a {
-  @apply text-lime-500;
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-html.light #blogContent a {
-  @apply text-lime-700;
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-#blogContent img {
-  margin: 1rem auto;
-  max-height: 600px;
-  object-fit: contain;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
 }
 
-#blogContent p {
-  word-break: keep-all;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

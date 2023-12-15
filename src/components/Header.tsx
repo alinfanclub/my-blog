@@ -5,6 +5,8 @@ import TypoWrite from "./TypoWrite";
 import Logout from "./Logout";
 import { useAuthContext } from "@/context/AuthContext";
 import DarkModeButton from "./DarkMode";
+import { IoSearchSharp } from "react-icons/io5";
+import SearchBar from "./SearchBar";
 
 export default function Header() {
   const { user, setUser, logout } = useAuthContext();
@@ -21,6 +23,7 @@ export default function Header() {
         </div>
         <DarkModeButton />
       </div>
+      <SearchBar />
       <div className="flex items-center text-base leading-5">
         <nav className="flex items-center gap-4">
           <Link href="/about">About</Link>
