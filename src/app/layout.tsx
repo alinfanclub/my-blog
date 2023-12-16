@@ -7,6 +7,7 @@ import { AuthContextProvider } from "@/context/AuthContext";
 import { DarkModeProvider } from "@/components/DarkModeProvider";
 import ScrollTop from "@/components/ScrollTop";
 import Head from "next/head";
+import { IoAnalytics } from "react-icons/io5";
 
 const sans = Noto_Sans_KR({ subsets: ["latin"] });
 
@@ -45,6 +46,7 @@ export default function RootLayout({
             <Header />
             <main className="grow px-4 max-w-screen-xl mx-auto w-full">
               {children}
+              <IoAnalytics />
             </main>
             <Footer />
             <ScrollTop />
