@@ -45,7 +45,7 @@ export default function RootLayout({
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
       
-        gtag('config', ${process.env.NEXT_PUBLIC_GTAG});
+        gtag('config', '${process.env.NEXT_PUBLIC_GTAG}');
         `}
       </Script>
       <body className="flex flex-col w-full">
