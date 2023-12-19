@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   },
   description: "Kim's Blog",
   keywords: ["Kim's Blog", "Next.js", "React", "JavaScript"],
+  verification: {
+    google: "8wFmz0xlYGlT5-Ze1LZOA-IulqTDjfA8cVAbK6FGvNI",
+  },
 };
 
 export const viewport: Viewport = {

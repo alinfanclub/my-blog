@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://kimdevlog.vercel.app/sitemap.xml
