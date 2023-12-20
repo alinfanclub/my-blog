@@ -39,7 +39,7 @@ export default function TagInputComponent({ selected, setSelected }: Props) {
       .then((res) => setTags(res.data.data));
   }, []);
 
-  const handleOnClick = (value: string) => {
+  const handleTagDelete = (value: string) => {
     setSelected(selected.filter((tag) => tag !== value));
   };
 
@@ -92,7 +92,7 @@ export default function TagInputComponent({ selected, setSelected }: Props) {
 
                 <span
                   className="cursor-pointer"
-                  onClick={() => handleOnClick(tag)}
+                  onClick={() => handleTagDelete(tag)}
                 >
                   <RxCrossCircled />
                 </span>
