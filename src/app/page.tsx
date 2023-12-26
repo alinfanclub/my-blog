@@ -2,6 +2,7 @@ import PerPageSelect from "@/components/PerPageSelect";
 import PostCard from "@/components/PostCard";
 import { Post } from "@/types/post";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const getAllPosts = async (page: number, perPage: number) => {
   const response = await fetch(
@@ -24,6 +25,10 @@ export default async function Home({
     typeof searchParams.perPage === "string" ? Number(searchParams.perPage) : 5;
 
   const { data: posts, totalPage } = await getAllPosts(page, perPage);
+
+  if (posts.length === 0) {
+    redirect("/");
+  }
 
   return (
     <section className="flex flex-col gap-4">
