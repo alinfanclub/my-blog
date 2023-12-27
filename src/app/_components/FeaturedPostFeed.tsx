@@ -3,6 +3,7 @@ import PostCard from "@/app/_components/PostCard";
 import { Post } from "@/types/post";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+
 const getAllPosts = async (page: number, perPage: number) => {
   const response = await fetch(
     `https://port-0-blog-server-5mk12alpaukt9j.sel5.cloudtype.app/post/featured?page=${page}&perPage=${perPage}`,
@@ -14,12 +15,16 @@ const getAllPosts = async (page: number, perPage: number) => {
 };
 
 export default async function FeaturedPostFeed({
-  page,
-  perPage,
+  searchParams,
 }: {
-  page: number;
-  perPage: number;
+  searchParams?: {
+    page?: string;
+    perPage?: string;
+  };
 }) {
+  const page = Number(searchParams?.page) || 1;
+  const perPage = Number(searchParams?.perPage) || 5;
+
   const { data: posts, totalPage } = await getAllPosts(page, perPage);
 
   if (posts.length === 0) {
