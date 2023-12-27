@@ -1,18 +1,14 @@
 "use client";
 
-import DeleteButton from "@/components/DeleteButton";
+import DeleteButton from "@/app/_components/DeleteButton";
 import { useAuthContext } from "@/context/AuthContext";
 import { Post } from "@/types/post";
 import printDate from "@/utils/printDate";
 import axios from "axios";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { useEffect, useLayoutEffect, useState } from "react";
-import { Cookies } from "react-cookie";
+import { useEffect, useState } from "react";
 
 export default function AdminPage() {
-  const cookies = new Cookies();
-  const cookie = cookies.get("jwt");
   const [posts, setPosts] = useState<Post[]>([]);
   const { user } = useAuthContext();
 
@@ -23,7 +19,6 @@ export default function AdminPage() {
         setPosts(res.data.data);
       });
   }, []);
-
   return (
     <>
       {user && (

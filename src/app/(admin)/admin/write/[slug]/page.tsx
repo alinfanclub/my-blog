@@ -1,7 +1,7 @@
 "use client";
 
-import { Editor } from "@/components/Eduitor";
-import TagInputComponent from "@/components/TagInputComponent";
+import { Editor } from "@/app/(admin)/admin/write/_componets/Editor";
+import TagInputComponent from "@/app/(admin)/admin/write/_componets/TagInputComponent";
 import { useAuthContext } from "@/context/AuthContext";
 import { uploadImage } from "@/utils/firestorage";
 import {
@@ -64,7 +64,7 @@ export default function WritePostPage({
           }
         )
         .then((res) => {
-          router.push(`/posts/${res.data.data.title}`);
+          router.replace(`/posts/${res.data.data.title}`);
         })
         .catch((err) => {
           console.log(err);

@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/app/_components/Header";
+import Footer from "@/app/_components/Footer";
 import { AuthContextProvider } from "@/context/AuthContext";
 import { DarkModeProvider } from "@/components/DarkModeProvider";
-import ScrollTop from "@/components/ScrollTop";
+import ScrollTop from "@/app/_components/ScrollTop";
 import Script from "next/script";
 
 const sans = Noto_Sans_KR({ subsets: ["latin"] });

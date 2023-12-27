@@ -7,7 +7,7 @@ export default function PerPageSelect({ page }: { page: number }) {
   const router = useRouter();
   const handelPerPageSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const perPage = e.target.value;
-    router.push(`${pathname}?page=${page}&perPage=${perPage}`);
+    router.replace(`${pathname}?page=${page}&perPage=${perPage}`);
   };
   return (
     <div className="flex gap-4 items-center justify-end">

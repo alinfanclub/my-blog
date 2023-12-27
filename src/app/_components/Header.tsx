@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import TypoWrite from "./TypoWrite";
 import Logout from "./Logout";
 import { useAuthContext } from "@/context/AuthContext";
-import DarkModeButton from "./DarkMode";
+import DarkModeButton from "../../components/DarkMode";
 import { IoSearchSharp } from "react-icons/io5";
 import SearchBar from "./SearchBar";
+import TypoWrite from "./TypoWrite";
 
 export default function Header() {
   const { user, setUser, logout } = useAuthContext();

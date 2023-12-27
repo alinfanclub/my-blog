@@ -3,7 +3,6 @@
 
 import { useIntersectionObserver } from "@/utils/useIntersectionObserver";
 import React, { useState } from "react";
-import Typewriter from "typewriter-effect";
 
 interface Props {
   content: string;

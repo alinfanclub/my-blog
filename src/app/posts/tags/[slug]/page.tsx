@@ -1,4 +1,4 @@
-import PostCard from "@/components/PostCard";
+import PostCard from "@/app/_components/PostCard";
 import { Post } from "@/types/post";
 import { Metadata, ResolvingMetadata } from "next";
 

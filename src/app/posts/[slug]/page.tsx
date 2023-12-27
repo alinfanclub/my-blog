@@ -1,4 +1,4 @@
-import Toc from "@/components/Toc";
+import Toc from "@/app/posts/_componets/Toc";
 import hljs from "highlight.js";
 import { remark } from "remark";
 import html from "remark-html";
