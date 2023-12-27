@@ -33,7 +33,6 @@ export default function WritePostPage({
       )
       .then((res) => {
         const { data } = res.data;
-        console.log(data);
         setTile(data.title);
         setContent(data.content);
         setDescription(data.description);

@@ -42,7 +42,6 @@ export default function WritePostPage() {
           }
         )
         .then((res) => {
-          console.log(res);
           router.replace(`/posts/${res.data.data.title}`);
         })
         .catch((err) => {

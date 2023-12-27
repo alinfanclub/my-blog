@@ -16,13 +16,14 @@ export default async function SearchResultPage({
 }: {
   params: { slug: string };
 }) {
+  const decodeStr = decodeURI(slug);
   const { data: searchedPost } = await getSearchedData(slug);
 
   return (
     <section className="flex flex-col gap-4">
       <h1 className="border-b pb-4">
         {`Searched by : `}
-        <strong>{`"${slug}"`}</strong> {`Keyword`}
+        <strong>{`"${decodeStr}"`}</strong> {`Keyword`}
       </h1>
       {searchedPost
         .sort(
