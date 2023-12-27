@@ -20,7 +20,6 @@ export const metadata = {
 
 export default async function tagListPasge() {
   const { data: tags } = await getTagList();
-  console.log(tags);
   return (
     <section>
       <h1 className="border-b pb-4 mb-8">Tag List</h1>

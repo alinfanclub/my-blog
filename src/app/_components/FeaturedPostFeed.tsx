@@ -15,16 +15,12 @@ const getAllPosts = async (page: number, perPage: number) => {
 };
 
 export default async function FeaturedPostFeed({
-  searchParams,
+  page,
+  perPage,
 }: {
-  searchParams?: {
-    page?: string;
-    perPage?: string;
-  };
+  page: number;
+  perPage: number;
 }) {
-  const page = Number(searchParams?.page) || 1;
-  const perPage = Number(searchParams?.perPage) || 5;
-
   const { data: posts, totalPage } = await getAllPosts(page, perPage);
 
   if (posts.length === 0) {
@@ -32,7 +28,7 @@ export default async function FeaturedPostFeed({
   }
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <PerPageSelect page={page} />
       {posts.map((post: Post) => (
         <PostCard post={post} key={post._id} />
@@ -68,6 +64,6 @@ export default async function FeaturedPostFeed({
           Next
         </Link>
       </div>
-    </>
+    </div>
   );
 }

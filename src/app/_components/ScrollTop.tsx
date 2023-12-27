@@ -26,7 +26,6 @@ export default function ScrollTop() {
       top: 0,
       behavior: "smooth",
     });
-    console.log(window.scrollY);
   };
   return (
     <div>
