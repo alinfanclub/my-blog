@@ -27,43 +27,54 @@ Built Site:
 │   │   │   └── write
 │   │   │       ├── [slug]
 │   │   │       │   └── page.tsx
+│   │   │       ├── _componets
+│   │   │       │   ├── Editor.tsx
+│   │   │       │   └── TagInputComponent.tsx
 │   │   │       └── page.tsx
 │   │   └── login
 │   │       └── page.tsx
 │   ├── [...not_found]
 │   │   └── page.tsx
+│   ├── _components
+│   │   ├── DeleteButton.tsx
+│   │   ├── FeaturedPostFeed.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   ├── Logout.tsx
+│   │   ├── NewestPostFeed.tsx
+│   │   ├── PerPageSelect.tsx
+│   │   ├── PostCard.tsx
+│   │   ├── ScrollTop.tsx
+│   │   ├── SearchBar.tsx
+│   │   └── TypoWrite.tsx
 │   ├── about
 │   │   └── page.tsx
 │   ├── favicon.ico
 │   ├── globals.css
 │   ├── layout.tsx
 │   ├── page.tsx
-│   └── posts
-│       ├── [slug]
-│       │   ├── error.tsx
-│       │   └── page.tsx
-│       └── page.tsx
+│   ├── posts
+│   │   ├── [slug]
+│   │   │   ├── error.tsx
+│   │   │   └── page.tsx
+│   │   ├── _componets
+│   │   │   └── Toc.tsx
+│   │   ├── page.tsx
+│   │   └── tags
+│   │       ├── [slug]
+│   │       │   └── page.tsx
+│   │       └── page.tsx
+│   ├── robots.txt
+│   ├── search
+│   │   └── [slug]
+│   │       └── page.tsx
+│   └── sitemap.ts
 ├── components
 │   ├── DarkMode.tsx
-│   ├── DarkModeProvider.tsx
-│   ├── DeleteButton.tsx
-│   ├── Eduitor.tsx
-│   ├── Footer.tsx
-│   ├── Header.tsx
-│   ├── Logout.tsx
-│   ├── MarkdownContents.tsx
-│   ├── PostCard.tsx
-│   ├── Profile.tsx
-│   ├── TagInputComponent.tsx
-│   ├── Toc.tsx
-│   └── TypoWrite.tsx
+│   └── DarkModeProvider.tsx
 ├── context
 │   └── AuthContext.tsx
-├── features
-│   └── auth
-│       └── userSlice.ts
 ├── middleware.ts
-│
 ├── types
 │   └── post.ts
 └── utils
