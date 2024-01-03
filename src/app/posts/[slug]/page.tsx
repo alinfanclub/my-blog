@@ -48,13 +48,13 @@ export default async function PostDetailPage({
   // 모든 이미지 태그 찾기 및 크기 속성 추가
   $("img").each((i, el) => {
     if (i === 0) {
-      $(el).attr("width", "100%");
-      $(el).attr("height", "auto");
+      $(el).attr("width", "800px");
+      $(el).attr("height", "360px");
       $(el).attr("rel", "preload");
       return;
     }
-    $(el).attr("width", "100%");
-    $(el).attr("height", "auto");
+    $(el).attr("width", "800px");
+    $(el).attr("height", "360px");
     $(el).attr("loading", "lazy");
     $(el).attr("rel", "preload");
   });
