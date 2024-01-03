@@ -47,9 +47,16 @@ export default async function PostDetailPage({
 
   // 모든 이미지 태그 찾기 및 크기 속성 추가
   $("img").each((i, el) => {
-    // 예시: 모든 이미지에 300x200 크기 지정
-    $(el).attr("width", "800");
-    $(el).attr("height", "360");
+    if (i === 0) {
+      $(el).attr("width", "100%");
+      $(el).attr("height", "auto");
+      $(el).attr("rel", "preload");
+      return;
+    }
+    $(el).attr("width", "100%");
+    $(el).attr("height", "auto");
+    $(el).attr("loading", "lazy");
+    $(el).attr("rel", "preload");
   });
 
   // 수정된 HTML 업데이트
