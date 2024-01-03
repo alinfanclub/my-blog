@@ -1,7 +1,4 @@
-import { AuthContextProvider } from "@/context/AuthContext";
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
-import { Cookies } from "react-cookie";
 
 export async function middleware(req: NextRequest) {
   try {
