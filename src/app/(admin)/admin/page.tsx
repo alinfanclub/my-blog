@@ -51,9 +51,7 @@ export default function AdminPage() {
                 >
                   <td className="text-center">{index + 1}</td>
                   <td className="border text-center  text-ellipsis overflow-hidden">
-                    <Link href={`/admin/write/${post.title}`}>
-                      {post.title}
-                    </Link>
+                    <Link href={`/admin/write/${post.slug}`}>{post.title}</Link>
                   </td>
                   <td className="border text-center text-ellipsis overflow-hidden">
                     {post.description}

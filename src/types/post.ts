@@ -9,4 +9,5 @@ export type Post = {
     name: string;
     email: string;
   };
+  slug: string;
 };

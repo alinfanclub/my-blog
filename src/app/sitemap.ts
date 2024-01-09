@@ -8,7 +8,7 @@ export default async function sitemap() {
   ).then((res) => res.json());
 
   const postUrls = posts.data.map((post: Post) => ({
-    url: `${baseUrl}/posts/${encodeURIComponent(post.title)}`,
+    url: `${baseUrl}/posts/${encodeURIComponent(post.slug)}`,
     lastModified: post.createdAt,
   }));
   return [

@@ -24,6 +24,7 @@ export default function WritePostPage({
   const [description, setDescription] = useState<string | undefined>();
   const [featured, setFeatured] = useState<boolean | undefined>();
   const [tags, setTags] = useState<string[]>([]);
+  const [postSlug, setPostSlug] = useState<string | undefined>();
   const { user } = useAuthContext();
   const router = useRouter();
   useEffect(() => {
@@ -37,6 +38,7 @@ export default function WritePostPage({
         setContent(data.content);
         setDescription(data.description);
         setFeatured(data.featured);
+        setPostSlug(data.slug);
         setTags(data.tags);
       })
       .catch((err) => {
@@ -56,6 +58,7 @@ export default function WritePostPage({
             description: description,
             tags: tags,
             featured: featured,
+            slug: postSlug,
             user,
           },
           {
@@ -120,6 +123,14 @@ export default function WritePostPage({
         onChange={(e) => setDescription(e.target.value)}
         value={description || ""}
       ></textarea>
+      <div>
+        <input
+          type="text"
+          placeholder="slug"
+          value={postSlug}
+          onChange={(e) => setPostSlug(e.target.value)}
+        />
+      </div>
       <label htmlFor="featured">Featured Post</label>
       <input
         type="checkbox"

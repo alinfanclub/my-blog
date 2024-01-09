@@ -5,7 +5,7 @@ import { format } from "timeago.js";
 
 export default function PostCard({ post }: { post: Post }) {
   return (
-    <Link href={`/posts/${post.title}`}>
+    <Link href={`/posts/${post.slug}`}>
       <div
         className=" bg-opacity-30 p-2 transition-all duration-200 rounded-xl [&>div>div>h1]:hover:text-lime-700  [&>div>div>h1]:dark:hover:text-lime-500 hover:border-lime-700 dark:hover:border-lime-400 border border-gray-900"
         key={post._id}
